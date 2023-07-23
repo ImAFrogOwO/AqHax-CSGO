@@ -7,6 +7,7 @@ using System.Threading;
 using AqHaxCSGO.Objects;
 using AqHaxCSGO.Objects.Structs;
 using static AqHaxCSGO.Objects.GlobalLists;
+using System.Drawing;
 
 namespace AqHaxCSGO.Hacks
 {
@@ -40,11 +41,20 @@ namespace AqHaxCSGO.Hacks
 
                     if (entity.Team != CBasePlayer.Team)
                     {
+
+                        string text1 = "Enemy";
+                        using (Font font1 = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point))
+                        {
+                            RectangleF rectF1 = new RectangleF(30, 10, 100, 122);
+                            Graphics a = Graphics.FromImage(new Bitmap(100, 100));
+                            a.DrawString(text1, font1, Brushes.Blue, rectF1);
+                        }
+
                         GlowObject glowObject = entityList[i].GlowObject;
                         glowObject.r = Globals.WallHackEnemy.R / 255;
                         glowObject.g = Globals.WallHackEnemy.G / 255;
                         glowObject.b = Globals.WallHackEnemy.B / 255;
-                        glowObject.a = 0.7f;
+                        glowObject.a = 5f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.BloomAmount = Globals.FullBloomAmount;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
@@ -55,11 +65,18 @@ namespace AqHaxCSGO.Hacks
                     }
                     else
                     {
+                        string text1 = "Teamate";
+                        using (Font font1 = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point))
+                        {
+                            RectangleF rectF1 = new RectangleF(30, 10, 100, 122);
+                            Graphics a = Graphics.FromImage(new Bitmap(100, 100));
+                            a.DrawString(text1, font1, Brushes.Blue, rectF1);
+                        }
                         GlowObject glowObject = entityList[i].GlowObject;
                         glowObject.r = Globals.WallHackTeammate.R / 255;
                         glowObject.g = Globals.WallHackTeammate.G / 255;
                         glowObject.b = Globals.WallHackTeammate.B / 255;
-                        glowObject.a = 0.7f;
+                        glowObject.a = 5f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.BloomAmount = Globals.FullBloomAmount;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
@@ -70,7 +87,7 @@ namespace AqHaxCSGO.Hacks
                     }
                 }
 
-                Thread.Sleep(Globals.UsageDelay);
+                Thread.Sleep(50);
             }
         }
 
@@ -122,7 +139,7 @@ namespace AqHaxCSGO.Hacks
                     EngineDLL.ModelAmbientIntensity = Globals.RenderBrightness;
                 }
 
-                Thread.Sleep(Globals.UsageDelay);
+                Thread.Sleep(100);
             }
         }
 
@@ -144,6 +161,7 @@ namespace AqHaxCSGO.Hacks
                 int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
+
                     CBaseEntity baseEntity = entityList[i];
                     if (baseEntity == null) continue;
                     CCSPlayer entity = new CCSPlayer(baseEntity);
@@ -152,9 +170,10 @@ namespace AqHaxCSGO.Hacks
                     if (entity.Team == CBasePlayer.Team) continue;
 
                     if (!entity.Spotted) entity.Spotted = true;
+
                 }
 
-                Thread.Sleep(Globals.UsageDelay);
+                Thread.Sleep(100);
             }
         }
     }

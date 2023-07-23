@@ -64,7 +64,7 @@ namespace AqHaxCSGO.Hacks.Features
                 for (int i = 0; i < 10; i++) //Seems to be making it more stable
                     if (weaponList.ActiveWeapon.IsKnife()) weaponList.ActiveWeapon.ViewModelEntityModelIndex = RuntimeGlobals.selectedKnifeModelIndex;
 
-                Thread.Sleep(Globals.UsageDelay);
+                Thread.Sleep(1000);
             }
         }
     }

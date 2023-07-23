@@ -37,7 +37,7 @@ namespace AqHaxCSGO.Hacks.Features
                 }
 
                 bool anythingChanged = false;
-                for (var i = 0; i < 8; i++)
+                for (var i = 0; i < 12; i++)
                 {
                     CBaseCombatWeapon currentWeapon = weaponList[i];
 
@@ -90,9 +90,13 @@ namespace AqHaxCSGO.Hacks.Features
                         anythingChanged = true;
                     }
                 }
-                if (Globals.ManualLoadEnabled && (GetAsyncKeyState((int)Keys.P) & 0x8000) > 0) EngineDLL.ForceReload = -1;
 
-                Thread.Sleep(TimeSpan.FromMilliseconds(0.1));
+                for (var i = 0; i < 12; i++)
+                
+                    if (Globals.ManualLoadEnabled && (GetAsyncKeyState((int)Keys.P) & 0x8000) > 0) EngineDLL.ForceReload = -1;
+                
+
+                Thread.Sleep(10);
             }
         }
     }

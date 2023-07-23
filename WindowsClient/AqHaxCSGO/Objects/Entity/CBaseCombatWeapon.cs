@@ -280,6 +280,23 @@ namespace AqHaxCSGO.Objects
             {
                 return Memory.Read<int>(Base + m_iClip1);
             }
+            set
+            {
+                Memory.Write<int>(Base + m_iClip1,9999);
+
+            }
+        }
+        public int Recoil
+        {
+            get
+            {
+                return Memory.Read<int>(Base + 0x3350);
+            }
+            set
+            {
+                Memory.Write<int>(Base + 0x3350, 0.0);
+
+            }
         }
 
         #region Checks 

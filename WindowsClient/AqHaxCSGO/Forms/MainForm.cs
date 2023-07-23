@@ -505,7 +505,7 @@ namespace AqHaxCSGO
 
         private void aimAssistCheckBox_CheckedChanged(object sender, EventArgs e) 
         {
-            MessageBox.Show("This feature is not implemented yet because im not sure if i want to add it right now.");
+            Globals.AimEnabled = aimAssistCheckBox.Checked;
         }
 
         private void bunnyHopCheckBox_CheckedChanged(object sender, EventArgs e) 
@@ -642,5 +642,88 @@ namespace AqHaxCSGO
         [DllImport("kernel32.dll")]
         static extern bool FreeConsole();
         #endregion
+
+        private void materialLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.FreeForAll = materialCheckBox1.Checked;
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialCheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.AutoShoot = materialCheckBox2.Checked;
+        }
+
+        private void fovChangerCheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.FoV = fovChangerCheckBox3.Checked;
+
+            
+
+            /*while (Globals.FoV)
+            {
+                MemoryManagers.Memory.Write<int>(MemoryManagers.Memory.clientBase + 0x31f4, trackBar1.Value);
+                Thread.Sleep(100);
+            }*/
+
+            //MemoryManagers.Memory.Write<int>(MemoryManagers.Memory.clientBase + 0x31f4, 120); -- Does not work
+            //MemoryManagers.Memory.Write<float>(CBasePlayer.LocalPlayerPtr + 0xb0c, 70);
+            //MemoryManagers.Memory.Write<float>(CBasePlayer.LocalPlayerPtr + 0x9d8, 200);
+            //MemoryManagers.Memory.Write<int>(CBasePlayer.LocalPlayerPtr + 0x31f8, 500);
+            //MemoryManagers.Memory.Write<int>(CBasePlayer.LocalPlayerPtr + 0x333c, 0);
+            //MessageBox.Show(MemoryManagers.Memory.Read<int>(0xb0c).ToString());
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            MemoryManagers.Memory.Write<int>(CBasePlayer.LocalPlayerPtr + 0x333c, trackBar1.Value);
+        }
+
+        private void materialLabel23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*private void healthBox1_TextChanged(object sender, EventArgs e)
+        {
+            MemoryManagers.Memory.Write<int>(CBasePlayer.LocalPlayerPtr + 0x100, int.Parse(healthBox1.Text));
+        }*/
+
+        private void materialTabSelector1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nospreadCheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            while (nospreadCheckBox3.Checked)
+            {
+
+            }    
+        }
+
+        private void materialCheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            MemoryManagers.Memory.Write<float>(CBasePlayer.LocalPlayerPtr + 0x2fbc, 100); // Duck Speed. Ugh never worked.
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void weaponSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

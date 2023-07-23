@@ -19,6 +19,7 @@ namespace AqHaxCSGO
         static Thread aimThread = new Thread(Aimbot.AimbotThread);
         static Thread triggerThread = new Thread(Aimbot.TriggerThread);
         static Thread radarThread = new Thread(WallHack.RadarThread);
+        static Thread FoV = new Thread(FovChanger.ChangeFoVThread);
         static Thread skinChangerThread = new Thread(SkinChanger.SkinChangerThread);
         static Thread knifeChangerThread = new Thread(KnifeChanger.KnifeChangerThread);
         static Thread knifeChangerAnimFixThread = new Thread(KnifeChangerAnimationFix.KnifeChangerAnimationFixThread);
@@ -36,6 +37,7 @@ namespace AqHaxCSGO
             skinChangerThread.IsBackground = true;
             knifeChangerThread.IsBackground = true;
             knifeChangerAnimFixThread.IsBackground = true;
+            FoV.IsBackground = true;
 
             bunnyThread.Start();
             antiFlashThread.Start();
@@ -45,6 +47,7 @@ namespace AqHaxCSGO
             aimThread.Start();
             triggerThread.Start();
             radarThread.Start();
+            FoV.Start();
             skinChangerThread.Start();
             knifeChangerThread.Start();
             knifeChangerAnimFixThread.Start();

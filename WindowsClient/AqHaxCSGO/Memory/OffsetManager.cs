@@ -145,10 +145,10 @@ namespace AqHaxCSGO.MemoryManagers
             //dwRadarBase = SigScanner.ClientSigScan("A1 ? ? ? ? 8B 0C B0 8B 01 FF 50 ? 46 3B 35 ? ? ? ? 7C EA 8B 0D", 1, 0, true);
             //dwSensitivity = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 1D F3 0F 10 05 ? ? ? ? F3 0F 11 44 24 ? 8B 44 24 18 35 ? ? ? ? 89 44 24 0C EB 0B", 2, 44, true);
             //dwSensitivityPtr = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 1D F3 0F 10 05 ? ? ? ? F3 0F 11 44 24 ? 8B 44 24 18 35 ? ? ? ? 89 44 24 0C EB 0B", 2, 0, true);
-            //dwSetClanTag = SigScanner.EngineSigScan("53 56 57 8B DA 8B F9 FF 15", 0, 0, true);
+            dwSetClanTag = SigScanner.EngineSigScan("53 56 57 8B DA 8B F9 FF 15", 0, 0, true);
             dwViewMatrix = SigScanner.ClientSigScan("0F 10 05 ? ? ? ? 8D 85 ? ? ? ? B9", 3, 176, true);
-            //dwWeaponTable = SigScanner.ClientSigScan("B9 ? ? ? ? 6A 00 FF 50 08 C3", 1, 0, true);
-            //dwWeaponTableIndex = SigScanner.ClientSigScan("39 86 ? ? ? ? 74 06 89 86 ? ? ? ? 8B 86", 2, 0, false);
+            dwWeaponTable = SigScanner.ClientSigScan("B9 ? ? ? ? 6A 00 FF 50 08 C3", 1, 0, true);
+            dwWeaponTableIndex = SigScanner.ClientSigScan("39 86 ? ? ? ? 74 06 89 86 ? ? ? ? 8B 86", 2, 0, false);
             //dwYawPtr = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 1D F3 0F 10 05 ? ? ? ? F3 0F 11 44 24 ? 8B 44 24 1C 35 ? ? ? ? 89 44 24 18 EB 0B 8B 01 8B 40 30 FF D0 D9 5C 24 18 F3 0F 10 06", 2, 0, true);
             //dwZoomSensitivityRatioPtr = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 1A F3 0F 10 05 ? ? ? ? F3 0F 11 45 ? 8B 45 F4 35 ? ? ? ? 89 45 FC EB 0A 8B 01 8B 40 30 FF D0 D9 5D FC A1", 2, 0, true);
             dwbSendPackets = SigScanner.EngineSigScan("B3 01 8B 01 8B 40 10 FF D0 84 C0 74 0F 80 BF ? ? ? ? ? 0F 84", 0, 1, true);

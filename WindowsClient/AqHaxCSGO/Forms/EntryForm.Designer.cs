@@ -48,9 +48,9 @@
             this.materialLabel3.Location = new System.Drawing.Point(2, 2);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(97, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(93, 19);
             this.materialLabel3.TabIndex = 7;
-            this.materialLabel3.Text = "AqHax-CSGO";
+            this.materialLabel3.Text = "AqHaxCSGO";
             // 
             // materialLabel1
             // 

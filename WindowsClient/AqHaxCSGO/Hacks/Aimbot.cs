@@ -98,7 +98,7 @@ namespace AqHaxCSGO.Hacks
                 Vector2 screenOrigin = new Vector2(screen.Width / 2, screen.Height / 2);
                 double latestDistance = screen.Width;
                 Vector3 closestEntityPos = new Vector3(99999f, 0f, 0f);
-                for (int i = 0; i < mp; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     CBaseEntity baseEntity = entityList[i];
                     if (baseEntity == null) continue;
@@ -106,7 +106,7 @@ namespace AqHaxCSGO.Hacks
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
                     if (entity.Health <= 0) continue;
-                    if (entity.Team == CBasePlayer.Team) continue;
+                    if (entity.Team == CBasePlayer.Team && Globals.FreeForAll != true) continue;
 
                     Vector3 entSelectedPos = entity.GetBonePosition((int)Globals.AimPosition);
                     Vector2 entPosOnScreen;
@@ -129,7 +129,8 @@ namespace AqHaxCSGO.Hacks
 
                 if (closestEntityPos.x != 99999f && (GetAsyncKeyState(Globals.TriggerKey) & 0x8000) > 0)
                 {
-                    Angle AimAt = CalcAngle(CBasePlayer.VectorEyeLevel, closestEntityPos);
+ 
+                    Angle AimAt = CalculateAngle(CBasePlayer.VectorEyeLevel, closestEntityPos);
 
                     if (Globals.AimRecoil)
                     {
@@ -145,7 +146,7 @@ namespace AqHaxCSGO.Hacks
                         if (weaponList.ActiveWeapon.IsSniper())
                         {
                             ClientDLL.ForceRightAttack(true);
-                            Thread.Sleep(2);
+                            Thread.Sleep(5);
                             ClientDLL.ForceAttack(true);
                             Thread.Sleep(5);
                             ClientDLL.ForceRightAttack(false);
@@ -153,29 +154,31 @@ namespace AqHaxCSGO.Hacks
                         }
                         else
                         {
-                            Thread.Sleep(1);
-                            ClientDLL.ForceAttack(true);
-                            Thread.Sleep(5);
-                            ClientDLL.ForceAttack(false);
+                            if (Globals.AutoShoot)
+                            {
+                                ClientDLL.ForceAttack(true);
+                                Thread.Sleep(5);
+                                ClientDLL.ForceAttack(false);
+                            }
                         }
                     }
                 }
 
-                Thread.Sleep(Globals.UsageDelay);
+                Thread.Sleep(0);
             }
         }
 
-        static Angle CalcAngle(Vector3 src, Vector3 dst)
+        static Angle CalculateAngle(Vector3 source, Vector3 destination)
         {
-
             Angle angles;
-            Vector3 e = new Vector3(dst.x - src.x, dst.y - src.y, dst.z - src.z);
-            float eh = (float)Sqrt(e.x * e.x + e.y * e.y);
+            Vector3 delta = new Vector3(destination.x - source.x, destination.y - source.y, destination.z - source.z);
+            double hypotenuse = Math.Sqrt(delta.x * delta.x + delta.y * delta.y);
 
-            angles.x = (float)(Atan2(-e.z, eh) * 180 / PI);
-            angles.y = (float)(Atan2(e.y, e.x) * 180 / PI);
+            angles.x = (float)(Math.Atan2(-delta.z, hypotenuse) * 180.0 / Math.PI);
+            angles.y = (float)(Math.Atan2(delta.y, delta.x) * 180.0 / Math.PI);
 
             return angles;
         }
+
     }
 }

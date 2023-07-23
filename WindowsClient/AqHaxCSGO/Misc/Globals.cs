@@ -119,11 +119,16 @@ namespace AqHaxCSGO.Objects
         public static bool ESPHealthEnabled = false;
         public static bool ESPName = false;
         public static bool ESPDebugSkeleton = false;
+        public static bool InfAmmo = false;
 
         public static bool AimEnabled = false;
         public static bool AimRecoil = false;
+        public static bool NoSpread = false;
         public static bool AimShootOnCollide = false;
         public static bool AimSilent = false;
+        public static bool FoV = false;
+        public static bool AutoShoot = false;
+        public static bool FreeForAll = false;
         public static bool AimAutoBot = false;
         public static HitboxGroup AimPosition = HitboxGroup.ENTITY_HEAD;
 
